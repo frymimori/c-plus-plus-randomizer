@@ -1,8 +1,10 @@
 #ifndef RANDOMIZER_HPP
 #define RANDOMIZER_HPP
 
-unsigned short randomizerA(void);
+namespace randomizer {
+	unsigned short A(void);
 
-unsigned short randomizerB(unsigned long a, unsigned short b);
+	unsigned short B(unsigned long a, unsigned short b);
+}
 
 #endif

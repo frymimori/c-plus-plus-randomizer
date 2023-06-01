@@ -15,7 +15,6 @@ Create random integers from standard I/O and timestamps using C++ with a fast an
 - Minified and readable code with single-letter variable names
 - No division, modulus or multiplication calculations from rand() in seeded randomization
 - No implementation-dependent noise seeding required
-- No namespaces required with collision-resistant declarations and definitions
 - No timestamp seeding required
 - Portable without relying on process IDs or /dev/random
 - Returns an unsigned 2-byte integer instead of 4-8 bytes from rand()
@@ -40,16 +39,17 @@ The following example uses code from the file [test.cpp](https://github.com/frym
 ``` cpp
 #include <cstdio>
 #include "randomizer.hpp"
+using namespace randomizer;
 
 int main (void) {
 	unsigned long a = 10;
 	unsigned short b;
-	b = randomizerA();
+	b = randomizer::A();
 	printf("%u\n", b);
 
 	while (a != 0) {
 		a--;
-		b = randomizerB(a, b);
+		b = randomizer::B(a, b);
 		printf("%u\n", b);
 	}
 
@@ -57,11 +57,11 @@ int main (void) {
 }
 ```
 
-The function `randomizerA()` initializes randomization and ouputs a random integer.
+The function `randomizer::A()` initializes randomization and ouputs a random integer.
 
 The return value `b` is an `unsigned short` defined as a random integer between `0` and `65535`.
 
-The function `randomizerB()` uses 2 seed values to output a random integer.
+The function `randomizer::B()` uses 2 seed values to output a random integer.
 
 The first argument variable `a` is an `unsigned long` defined as the first seed for randomization.
 
