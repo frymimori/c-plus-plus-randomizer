@@ -1,5 +1,5 @@
 #include <cstdio>
-#include "randomizer.h"
+#include "randomizer.hpp"
 
 int main (void) {
 	unsigned long a = 10;

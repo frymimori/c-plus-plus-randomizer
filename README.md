@@ -39,7 +39,7 @@ The following example uses code from the file [test.cpp](https://github.com/frym
 
 ``` cpp
 #include <cstdio>
-#include "randomizer.h"
+#include "randomizer.hpp"
 
 int main (void) {
 	unsigned long a = 10;
