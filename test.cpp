@@ -1,17 +1,32 @@
 #include <cstdio>
+#include <ctime>
 #include "randomizer.hpp"
 using namespace randomizer;
 
-int main (void) {
-	unsigned long a = 10;
-	unsigned short b;
-	b = randomizer::A();
-	printf("%u\n", b);
+int main(void) {
+	unsigned long a = randomizer::randomizer(time(0));
+	unsigned char b = 10;
 
-	while (a != 0) {
-		a--;
-		b = randomizer::B(a, b);
-		printf("%u\n", b);
+	while (b != 0) {
+		a = randomizer::randomizer(a);
+		b--;
+		printf("%lu\n", a);
+	}
+
+	b = 10;
+
+	while (b != 0) {
+		a = randomizer::randomizer(a);
+		b--;
+		printf("%u\n", a & 65535);
+	}
+
+	b = 10;
+
+	while (b != 0) {
+		a = randomizer::randomizer(a);
+		b--;
+		printf("%u\n", a & 255);
 	}
 
 	return 0;

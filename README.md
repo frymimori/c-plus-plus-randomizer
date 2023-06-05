@@ -1,25 +1,29 @@
 ## C++ Randomizer
 
 #### Description
-Create random integers from standard I/O and timestamps using C++ with a fast and unique randomizing algorithm.
 
-- Allocates static memory with stack instead of heap
+Create pseudo-random and random integers using C with a fast and unique randomizing algorithm.
+
+- All integral data types supported in output
+- Allocates memory without dynamic memory allocation functions
+- Alternative to rand() returns integers with 4-8 bytes instead of 8-12 bytes
+- Alternative to srand() randomizes and seeds randomization in the same function
 - Compiles with forward-compatible C++98
 - Conforms to strict ISO C++ with -pedantic-errors enabled
-- Derives more subsequent entropy than rand() with 2 seed integers instead of 1
-- Efficient alternative to rand() with the same integer length between 0 and 65535
+- Derives more subsequent entropy than rand() after seeding with no degredation after millions of iterations
+- Efficient alternative to rand() and srand() with ULONG_MAX output instead of SHRT_MAX
 - Efficient without multithreading or processor-specific vectorization
+- Escapes zeroland immediately on subsequent function calls
 - Fast randomization speed without relying on compiler optimization
-- Initializes more secure randomization beyond pseudo-randomization with time() and tmpnam()
+- Fewer instructions and operators with less memory and CPU consumption than rand()
+- Generates random cryptographically-secure integers when reseeded with a random number derived from random bytes
 - Memory-safe with defined behavior
 - Minified and readable code with single-letter variable names
-- No division, modulus or multiplication calculations from rand() in seeded randomization
-- No implementation-dependent noise seeding required
-- No timestamp seeding required
-- Portable without relying on process IDs or /dev/random
-- Returns an unsigned 2-byte integer instead of 4-8 bytes from rand()
-- Seed initialization returns a value that can be deallocated or modified
-- Seeded randomization only uses addition, bitwise AND and bitwise shifting operations
+- No division or modulus operations from rand()
+- Only addition, bitwise shift and multiplication operations used in a simple expression
+- Parallel randomization supported with implementation-specific process IDs and /dev/random bytes
+- Seeks numbers with granular randomization state in function arguments and return values
+- Suitable for both slow CSRNG and fast PRNG purposes based on the frequency and randomness of seed values
 
 #### Usage
 Clone the repository in the current directory with the command `git`.
@@ -38,58 +42,82 @@ The following example uses code from the file [test.cpp](https://github.com/frym
 
 ``` cpp
 #include <cstdio>
+#include <ctime>
 #include "randomizer.hpp"
 using namespace randomizer;
 
-int main (void) {
-	unsigned long a = 10;
-	unsigned short b;
-	b = randomizer::A();
-	printf("%u\n", b);
+int main(void) {
+	unsigned long a = randomizer::randomizer(time(0));
+	unsigned char b = 10;
 
-	while (a != 0) {
-		a--;
-		b = randomizer::B(a, b);
-		printf("%u\n", b);
+	while (b != 0) {
+		a = randomizer::randomizer(a);
+		b--;
+		printf("%lu\n", a);
+	}
+
+	b = 10;
+
+	while (b != 0) {
+		a = randomizer::randomizer(a);
+		b--;
+		printf("%u\n", a & 65535);
+	}
+
+	b = 10;
+
+	while (b != 0) {
+		a = randomizer::randomizer(a);
+		b--;
+		printf("%u\n", a & 255);
 	}
 
 	return 0;
 }
 ```
 
-The function `randomizer::A()` initializes randomization and ouputs a random integer.
+The function `randomizer::randomizer()` ouputs a randomized `unsigned long` integer.
 
-The return value `b` is an `unsigned short` defined as a random integer between `0` and `65535`.
+The return value `a` is an `unsigned long` defined as an integer between `0` and `ULONG_MAX`.
 
-The function `randomizer::B()` uses 2 seed values to output a random integer.
-
-The first argument variable `a` is an `unsigned long` defined as the first seed for randomization.
-
-The value should be an index integer.
-
-The second argument variable `b` is an `unsigned short` defined as the second seed for randomization.
-
-The value should be a random integer.
-
-The return value variable `b` is an `unsigned short` defined as a random integer result between `0` and `65535`.
+The first argument variable `a` is an `unsigned long` defined as either the current randomization state or the seed for randomization.
 
 ``` console
 gcc -o c-plus-plus-randomizer -pedantic-errors -std=c++98 randomizer.cpp test.cpp && ./c-plus-plus-randomizer
 ```
 
-The output from the command `./c-plus-plus-randomizer` is a set of random integers between `0` and `65535`.
+The output from the command `./c-plus-plus-randomizer` is a set of timestamp-seeded pseudo-random integers with specific integral data types.
 
 ``` console
 ./c-plus-plus-randomizer
-# 29282
-# 11425
-# 4912
-# 34003
-# 47418
-# 65107
-# 55192
-# 62953
-# 34172
-# 352
-# 88
+# 16672331205724537351
+# 4668313745905881366
+# 10595719534961995353
+# 14295086618798993145
+# 4437415150218644585
+# 1785814382729887057
+# 7830692703958392013
+# 9039024910036510647
+# 16713160888462422878
+# 5559399300067795813
+# 61819
+# 16212
+# 5006
+# 44909
+# 59431
+# 46278
+# 26017
+# 10117
+# 55851
+# 16924
+# 90
+# 15
+# 66
+# 139
+# 44
+# 178
+# 115
+# 168
+# 28
+# 90
 ```

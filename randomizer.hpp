@@ -2,9 +2,7 @@
 #define RANDOMIZER_HPP
 
 namespace randomizer {
-	unsigned short A(void);
-
-	unsigned short B(unsigned long a, unsigned short b);
+	unsigned long randomizer(unsigned long a);
 }
 
 #endif

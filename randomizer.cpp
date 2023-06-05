@@ -1,23 +1,5 @@
-#include <cstdio>
-#include <ctime>
-
 namespace randomizer {
-	unsigned short A(void) {
-		unsigned long a = 0;
-		unsigned long b = 0;
-		char * c = tmpnam(0);
-
-		while (c[a] != 0) {
-			b = ((b + 1) * c[a]) & 65535;
-			a++;
-		}
-
-		a = (b + (time(0) & 65535)) & 65535;
-		return a;
-	}
-
-	unsigned short B(unsigned long a, unsigned short b) {
-		a = ((a & 65535) + (b << 11) + (b >> 2)) & 65535;
-		return a;
+	unsigned long randomizer(unsigned long a) {
+		return (a * 1010110101) + (a >> 1);
 	}
 }
