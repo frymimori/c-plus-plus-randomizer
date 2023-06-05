@@ -6,22 +6,22 @@ Create pseudo-random and random integers using C++ with a fast and unique random
 
 - All integral data types supported in output
 - Allocates memory without dynamic memory allocation functions
-- Alternative to rand() returns integers with 4-8 bytes instead of 8-12 bytes
-- Alternative to srand() randomizes and seeds randomization in the same function
-- Compiles with forward-compatible C++98
-- Conforms to strict ISO C++ with -pedantic-errors enabled
-- Derives more subsequent entropy than rand() after seeding with no degredation after millions of iterations
-- Efficient alternative to rand() and srand() with ULONG_MAX output instead of SHRT_MAX
+- Alternative to `rand()` returns integers with 4-8 bytes instead of 8-12 bytes
+- Alternative to `srand()` randomizes and seeds randomization in the same function
+- Compiles with forward-compatible `C++98`
+- Conforms to strict ISO C++ with `-pedantic-errors` enabled
+- Derives more subsequent entropy than `rand()` after seeding with no degredation after millions of iterations
+- Efficient alternative to `rand()` and `srand()` with `ULONG_MAX` output instead of `SHRT_MAX`
 - Efficient without multithreading or processor-specific vectorization
 - Escapes zeroland immediately on subsequent function calls
 - Fast randomization speed without relying on compiler optimization
-- Fewer instructions and operators with less memory and CPU consumption than rand()
+- Fewer instructions and operators with less memory and CPU consumption than `rand()`
 - Generates random cryptographically-secure integers when reseeded with a random number derived from random bytes
 - Memory-safe with defined behavior
 - Minified and readable code with single-letter variable names
-- No division or modulus operations from rand()
+- No division or modulus operations from `rand()`
 - Only addition, bitwise shift and multiplication operations used in a simple expression
-- Parallel randomization supported with implementation-specific process IDs and /dev/random bytes
+- Parallel randomization supported with implementation-specific process IDs and `/dev/random` bytes
 - Seeks numbers with granular randomization state in function arguments and return values
 - Suitable for both slow CSRNG and fast PRNG purposes based on the frequency and randomness of seed values
 
