@@ -2,7 +2,7 @@
 
 #### Description
 
-Create pseudo-random and random integers using C with a fast and unique randomizing algorithm.
+Create pseudo-random and random integers using C++ with a fast and unique randomizing algorithm.
 
 - All integral data types supported in output
 - Allocates memory without dynamic memory allocation functions
