@@ -10,7 +10,7 @@ Create pseudo-random and random integers using C++ with a fast and unique random
 - Alternative to `srand()` randomizes and seeds randomization in the same function
 - Compiles with forward-compatible `C++98`
 - Conforms to strict ISO C++ with `-pedantic-errors` enabled
-- Derives more subsequent entropy than `rand()` after seeding with no degredation after millions of iterations
+- Derives more subsequent entropy than `rand()` after seeding with less degredation
 - Efficient alternative to `rand()` and `srand()` with `ULONG_MAX` output instead of `SHRT_MAX`
 - Efficient without multithreading or processor-specific vectorization
 - Escapes zeroland immediately on subsequent function calls
