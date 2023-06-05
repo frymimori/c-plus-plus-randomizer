@@ -16,14 +16,14 @@ Create pseudo-random and random integers using C++ with a fast and unique random
 - Escapes zeroland immediately on subsequent function calls
 - Fast randomization speed without relying on compiler optimization
 - Fewer instructions and operators with less memory and CPU consumption than `rand()`
-- Generates random cryptographically-secure integers when reseeded with a random number derived from random bytes
+- Generates random cryptographically-secure integers when reseeded frequently with random bytes
 - Memory-safe with defined behavior
 - Minified and readable code with single-letter variable names
 - No division or modulus operations from `rand()`
 - Only addition, bitwise shift and multiplication operations used in a simple expression
 - Parallel randomization supported with implementation-specific process IDs and `/dev/random` bytes
 - Seeks numbers with granular randomization state in function arguments and return values
-- Suitable for both slow CSRNG and fast PRNG purposes based on the frequency and randomness of seed values
+- Suitable for both slow CSRNG and fast PRNG based on the frequency and randomness of seed values
 
 #### Usage
 Clone the repository in the current directory with the command `git`.
