@@ -83,7 +83,7 @@ The return value `a` is an `unsigned long` defined as an integer between `0` and
 The first argument variable `a` is an `unsigned long` defined as either the current randomization state or the seed for randomization.
 
 ``` console
-gcc -o c-plus-plus-randomizer -pedantic-errors -std=c++98 randomizer.cpp test.cpp && ./c-plus-plus-randomizer
+gcc -o c-plus-plus-randomizer -pedantic-errors -std=c++98 randomizer.cpp test.cpp
 ```
 
 The output from the command `./c-plus-plus-randomizer` is a set of timestamp-seeded pseudo-random integers with specific integral data types.
