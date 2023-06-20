@@ -13,7 +13,7 @@ Create pseudo-random and random integers using C++ with a fast and unique random
 - Derives more subsequent entropy than `rand()` after seeding with less degredation
 - Efficient alternative to `rand()` and `srand()` with `ULONG_MAX` output instead of `SHRT_MAX`
 - Efficient without multithreading or processor-specific vectorization
-- Escapes zeroland immediately on subsequent function calls
+- Escapes zeroland immediately on subsequent function calls without reseeding
 - Fast randomization speed without relying on compiler optimization
 - Fewer instructions and operators with less memory and CPU consumption than `rand()`
 - Generates random cryptographically-secure integers when reseeded frequently with random bytes
